@@ -6,7 +6,7 @@ It is implented in typescript and has express-js integrations right out of the b
 ## Getting Started
 
 Lets say you have the following classes:
-````
+````ts
 class DependencyA { ... }
 class DependencyB { 
     constructor(private a: DependencyA) {}
@@ -33,7 +33,7 @@ To Get started you need to import the `DiContainer` Class in order to create a c
 
 To do it just new up this class and start registering your dependencies using the `register()` method.
 
-````
+````ts
 const container = new DiContainer();
 
 container.register(SomeService)
@@ -41,7 +41,7 @@ container.register(SomeService)
 
 Later on wherever you need an instance of `SomeService`
 
-````
+````ts
 const someService = container.resolve(SomeService)
 someService.doSomething();
 ````
@@ -59,13 +59,13 @@ Additionally when registering a service you can pass its lifetime, to let the co
 ### How this works?
 Well easy, for every dependency you register just pass the `lifeTime` option with one of the previous values.
 
-````
+````ts
 container.register(SomeService, { lifeTime: 'scoped' })
 ````
 
 The default value is `transient`, but if `scoped` value was used, you'll have to provide the scope when calling the resolve method.
 Lets say we are ina middleware function where the container is available:
-````
+````ts
 function middleware(request, response, next) => {
     const scopedSomeService = container.resolve(SomeService, request)
     scopedSomeService.doSomething();
@@ -84,7 +84,7 @@ If you are working with express you can forget everything explained before and t
 
 Here's how:
 
-````
+````ts
 
 
 @Service({ lifeTime: 'scoped' })
