@@ -23,7 +23,7 @@ export interface IDependency<T> {
 class DiContainer {
   private singletons: any = {};
   private dependencies: DependencyMap = {};
-  register<T>(Dependency: IDependency<T>, options: DependencyOptions = { lifeTime: 'scoped' }) {
+  register<T>(Dependency: IDependency<T>, options: DependencyOptions = { lifeTime: 'transient' }) {
     this.dependencies[Dependency.name] = {
       options,
       Dependency,
