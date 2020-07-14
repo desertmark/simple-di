@@ -1,0 +1,21 @@
+{
+  "name": "simple-di",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/test.app.js",
+    "build": "tsc"
+  },
+  "author": "Fernando Asulay",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.13",
+    "express": "^4.17.1",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
