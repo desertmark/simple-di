@@ -16,7 +16,7 @@ var DiContainer = /** @class */ (function () {
         this.dependencies = {};
     }
     DiContainer.prototype.register = function (Dependency, options) {
-        if (options === void 0) { options = { lifeTime: 'scoped' }; }
+        if (options === void 0) { options = { lifeTime: 'transient' }; }
         this.dependencies[Dependency.name] = {
             options: options,
             Dependency: Dependency,

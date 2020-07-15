@@ -13,7 +13,7 @@ var di_container_1 = require("../../di-container");
 var express = require("express");
 exports.Controller = function (path) {
     return function (target) {
-        di_container_1.container.register(target);
+        di_container_1.container.register(target, { lifeTime: 'scoped' });
         var metadata = Reflect.getMetadata(constants_1.endpointMeta, target.prototype);
         var router = express.Router();
         metadata.forEach(function (endpoint) {

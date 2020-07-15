@@ -7,7 +7,7 @@ import express = require('express');
 
 export const Controller = (path: string) => {
     return (target: any) => {
-      container.register(target);
+      container.register(target, { lifeTime: 'scoped' });
       const metadata: EndpointMetadata[] = Reflect.getMetadata(endpointMeta, target.prototype);
       const router: Router = express.Router();
       metadata.forEach(endpoint => {

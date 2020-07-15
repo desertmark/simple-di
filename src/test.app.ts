@@ -53,4 +53,4 @@ const app: Application = express();
 
 expressDiConnector(app, [TestController]);
 
-app.listen(3001, () => console.log('DI Test app is UP at port 3001'));
+app.listen(3001, () => console.log('DI Test app is UP at port 3001/api'));

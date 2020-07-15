@@ -88,4 +88,4 @@ var TestController = /** @class */ (function () {
 exports.TestController = TestController;
 var app = express();
 index_1.expressDiConnector(app, [TestController]);
-app.listen(3001, function () { return console.log('DI Test app is UP at port 3001'); });
+app.listen(3001, function () { return console.log('DI Test app is UP at port 3001/api'); });
