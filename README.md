@@ -29,12 +29,12 @@ class SomeService {
 To get your hands on an instance of `SomeService` first you need some how to get a instance of `DependencyB` class which requires an instance of `DependencyA`. Dependencies relations can scalate quickly even on small apps.
 
 With simple DI getting an instance of SomeService is rather easy.
-To Get started you need to import the `DiContainer` Class in order to create a container. The main purpose of this class is to resolve the dependencies you will later register in it.
+To Get started you need to import the `DiContainer` instance. The main purpose of this class is to resolve the dependencies you will later register in it.
 
-To do it just new up this class and start registering your dependencies using the `register()` method.
+This class is singleton, this means an instance of it is exported and you don't have to worry abount creating the instance. To do it just import the container instance and start registering your dependencies using the `register()` method.
 
 ````ts
-const container = new DiContainer();
+import { container } from 'simple-di-poc';
 
 container.register(SomeService)
 ````
