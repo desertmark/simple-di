@@ -1,6 +1,6 @@
 {
   "name": "simple-di-poc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,9 @@
   },
   "author": "Fernando Asulay",
   "license": "ISC",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/desertmark/simple-di.git"
