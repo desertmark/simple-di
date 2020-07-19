@@ -29,17 +29,22 @@ class SomeService {
 To get your hands on an instance of `SomeService` first you need some how to get a instance of `DependencyB` class which requires an instance of `DependencyA`. Dependencies relations can scalate quickly even on small apps.
 
 With simple DI getting an instance of SomeService is rather easy.
-To Get started you need to import the `DiContainer` instance. The main purpose of this class is to resolve the dependencies you will later register in it.
-
-This class is singleton, this means an instance of it is exported and you don't have to worry abount creating the instance. To do it just import the container instance and start registering your dependencies using the `register()` method.
+To Get started you need to import the `Service` decorator and use it in the classes you want to declarate as a dependency.
 
 ````ts
 import { container } from 'simple-di-poc';
 
-container.register(SomeService)
+@Service()
+class SomeService() {
+    ...
+}
 ````
 
-Later on wherever you need an instance of `SomeService`
+Later on wherever you need an instance of `SomeService` you will need import the container instance.
+The main purpose of this class is to resolve the dependencies you previously delcare as such.
+This class is a singleton, this means an instance of it is exported and you don't have to worry abount creating the instance.
+
+To get an instance of a dependency you simple use the `resolve()` method and pass the class type you need the instance of.
 
 ````ts
 const someService = container.resolve(SomeService)
@@ -75,9 +80,8 @@ function middleware(request, response, next) => {
 
 The instance returned by the container will be shared for all the other situation where the same request instance is provied.
 
-
 ## Express Integration
-If you are working with express you can forget everything explained before and take advantage of the express-js integration decorators provided for evena more simple integration in 3 easy steps.
+If you are working with express you can forget everything explained before and take advantage of the express-js integration decorators provided for even a more simple integration in 3 easy steps.
 1. Write your dependencies and use the `Service` decorator to let the container know that's a dependency you want registered 
 2. Use the `Controller` decorator along with the `Get`, `Post`, `Put`, `Patch` and `Delete` decorators, to let the integration know how your express-js router should be builded.
 3. use `expressDiConnector()` integration function to register the routers in the express-js app

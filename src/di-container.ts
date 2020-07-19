@@ -19,11 +19,11 @@ export interface DependencyMap {
 export interface IDependency<T> {
   new(...args): T
 }
-
+export const defaultOptions: DependencyOptions = { lifeTime: 'transient' };
 class DiContainer {
   private singletons: any = {};
   private dependencies: DependencyMap = {};
-  register<T>(Dependency: IDependency<T>, options: DependencyOptions = { lifeTime: 'transient' }) {
+  register<T>(Dependency: IDependency<T>, options: DependencyOptions = defaultOptions) {
     this.dependencies[Dependency.name] = {
       options,
       Dependency,
@@ -32,6 +32,9 @@ class DiContainer {
 
   resolve<T>(Dependency: IDependency<T>, scope?: any): T {
     const dependencyMapItem = this.dependencies[Dependency.name];
+    if (!dependencyMapItem) {
+      throw Error(`${Dependency.name} is not registered as a dependency`);
+    }
     let instance: T;
     if (dependencyMapItem.options.lifeTime === 'transient') {
       instance = this.buildDependency(dependencyMapItem.Dependency);
